@@ -31,6 +31,26 @@ num2 = int(input("What's the second number?: "))
 
 symbol = operations[operation_symbol]
 
-answer = symbol(num1, num2)
+first_answer = symbol(num1, num2)
 
-print(f"{num1} {operation_symbol} {num2} = {answer}")
+print(f"{num1} {operation_symbol} {num2} = {first_answer}")
+
+
+def another_one(var_answer):
+    operation_symbol = input("Pick another operation: ")
+    num3 = int(input("What's the next number?: "))
+    symbol = operations[operation_symbol]
+    second_answer = symbol(var_answer, num3)
+    print(f"{first_answer} {operation_symbol} {num3} = {second_answer}")
+    return second_answer
+
+
+Total = first_answer
+restart = True
+while restart:
+    user_var = input(f"Type 'y' to continue calculating with {Total}, or type 'n' to exit.: ").lower()
+    if user_var == "n":
+        restart = False
+    else:
+        answer = another_one(Total)
+        Total = answer
